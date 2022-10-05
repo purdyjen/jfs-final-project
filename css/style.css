@@ -1,0 +1,10 @@
+#project-about {
+    background-image: url(../images/photo-1450778869180-41d0601e046e.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    height: 40vh;
+    width: 100%;
+    overflow: hidden;
+}
