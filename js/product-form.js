@@ -1,5 +1,5 @@
-console.log("form connected!");
 import ProductsController from "./ProductsController.js";
+import { titleCase, formatPrice } from "./helperFunctions.js";
 // Initialize a new productsController with currentId set to 0
 const productsController = new ProductsController(0);
 productsController.loadProductsFromLS();
@@ -17,12 +17,19 @@ addNewProductForm.addEventListener("submit", (e) => {
   const newProductImageAltText = document.getElementById("image-alt-text");
   const newProductPrice = document.getElementById("product-price");
   // Get the values of the inputs
-  const name = newProductName.value;
-  const description = newProductDescription.value;
-  const imageUrl = newProductImageUrl.value;
-  const imageAltText = newProductImageAltText.value;
-  const price = newProductPrice.value;
+  let name = newProductName.value;
+  let description = newProductDescription.value;
+  let imageUrl = newProductImageUrl.value;
+  let imageAltText = newProductImageAltText.value;
+  let price = Number(newProductPrice.value);
   // Validation Code
+
+  // Name Validation - desired output is title case
+  name = titleCase(name);
+
+  // Format price to have two decimals
+  price = formatPrice(price);
+
   // Add product to the ProductsController
   productsController.addProduct(
     name,
@@ -40,4 +47,3 @@ addNewProductForm.addEventListener("submit", (e) => {
   newProductImageAltText.value = "";
   newProductPrice.value = "";
 });
-console.log(productsController.products);
