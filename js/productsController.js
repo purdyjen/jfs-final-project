@@ -18,12 +18,13 @@ export default class ProductsController {
     return month + "-" + date + "-" + year;
   }
 
-  addProduct(name, description, img, price) {
+  addProduct(name, description, imgUrl, imgAltText, price) {
     const product = {
       id: this.currentId++,
       name: name,
       description: description,
-      img: img,
+      imgUrl: imgUrl,
+      imgAltText: imgAltText,
       price: price,
       createdAt: this.getDate(),
     };
