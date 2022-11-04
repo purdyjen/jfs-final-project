@@ -59,43 +59,62 @@
     <main class="container">
       <h1 class="pt-5">Add New Product</h1>
       <hr />
-      <form>
+      <form id="add-new-product">
         <div class="mb-3">
-          <label for="productName" class="form-label">Product Name</label>
+          <label for="product-name" class="form-label">Product Name</label>
           <input
             type="text"
             class="form-control"
-            id="productName"
-            aria-describedby="productName"
+            id="product-name"
+            aria-describedby="product-name"
           />
         </div>
         <div class="mb-3">
-          <label for="productDescription" class="form-label"
+          <label for="product-description" class="form-label"
             >Product Description</label
           >
           <textarea
             class="form-control"
-            id="productDescription"
+            id="product-description"
             rows="3"
           ></textarea>
         </div>
         <div class="mb-3">
-          <label for="productPrice" class="form-label">Product Price</label>
+          <label for="product-image-url" class="form-label"
+            >Product Image URL</label
+          >
           <input
-            type="number"
+            type="text"
             class="form-control"
-            id="productPrice"
-            aria-describedby="productPrice"
-            placeholder="$"
+            id="product-image-url"
+            aria-describedby="product-image-url"
           />
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
           <label for="productImage" class="form-label"
             >Add New Product Image</label
           >
           <input class="form-control" type="file" id="productImage" />
+        </div> -->
+        <div class="mb-3">
+          <label for="image-alt-text" class="form-label">Image Alt Text</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image-alt-text"
+            aria-describedby="image-alt-text"
+          />
         </div>
-
+        <div class="mb-3">
+          <label for="product-price" class="form-label">Product Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="product-price"
+            aria-describedby="product-price"
+            placeholder="$"
+          />
+        </div>
         <button type="submit" class="btn btn-primary">Save</button>
       </form>
     </main>
@@ -105,7 +124,6 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="js/productsController.js"></script>
-    <script type="module" src="js/products.js"></script>
+    <script type="module" src="js/product-form.js"></script>
   </body>
 </html>

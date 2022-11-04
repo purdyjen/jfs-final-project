@@ -30,7 +30,8 @@ export default class ProductsController {
           description: "Don't forget to feed your precious fur babies.",
           id: 0,
           imgAltText: "A white bowl with cute cat ears full of cat food",
-          imgUrl: "/images/products/cat-2170495_640.jpg",
+          imgUrl:
+            "https://cdn.pixabay.com/photo/2017/03/24/08/27/cat-2170495_1280.jpg",
           name: "Brand Name Cat Food",
           price: 15,
         },
@@ -39,7 +40,8 @@ export default class ProductsController {
           description: "Because dogs are ALWAYS starving.",
           id: 1,
           imgAltText: "A white bowl with green edges full of dog food",
-          imgUrl: "/images/products/dog-food-5168940_640.jpg",
+          imgUrl:
+            "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2371&q=80",
           name: "Brand Name Dog Food",
           price: 15,
         },
@@ -48,14 +50,21 @@ export default class ProductsController {
           description: "Who's a good boy?? You're a good boy!",
           id: 2,
           imgAltText: "A colorful variety of bone-shaped dog treats",
-          imgUrl: "/images/products/dog-bones-350092_640.jpg",
+          imgUrl:
+            "https://cdn.pixabay.com/photo/2014/05/21/18/08/dog-bones-350092_1280.jpg",
           name: "Brand Name Dog Treats",
           price: 10,
         },
       ];
       localStorage.setItem("products", JSON.stringify(productsFromLS));
+    } else {
+      this.products = productsFromLS;
     }
     return productsFromLS;
+  };
+
+  saveProductsToLS = () => {
+    localStorage.setItem("products", JSON.stringify(this.products));
   };
 
   addProduct(name, description, imgUrl, imgAltText, price) {

@@ -1,5 +1,5 @@
 console.log("products.js connected!");
-import ProductsController from "./productsController.js";
+import ProductsController from "./ProductsController.js";
 const products = new ProductsController();
 
 const loadedProducts = products.loadProductsFromLS();
