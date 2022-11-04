@@ -7,7 +7,7 @@ export default class ProductsController {
 
   getDate() {
     const d = new Date();
-    let month = d.getUTCMonth().toString();
+    let month = (d.getUTCMonth() + 1).toString();
     let date = d.getUTCDate().toString();
     let year = d.getFullYear().toString();
 
