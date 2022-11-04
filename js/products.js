@@ -1,4 +1,3 @@
-console.log("products.js connected!");
 import ProductsController from "./ProductsController.js";
 const products = new ProductsController();
 
@@ -7,7 +6,6 @@ const listProductsDiv = document.getElementById("list-products");
 
 function addProductCards(arr) {
   for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
     const card = document.createElement("div"); // Creates div element object
     let cardHTML = `
     <div class="card mb-3" style="max-width: 540px">

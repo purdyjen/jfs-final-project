@@ -1,4 +1,3 @@
-console.log("Controller connected!");
 // import { loadProductsFromLS } from "./products.js";
 
 export default class ProductsController {
@@ -33,7 +32,7 @@ export default class ProductsController {
           imgUrl:
             "https://cdn.pixabay.com/photo/2017/03/24/08/27/cat-2170495_1280.jpg",
           name: "Brand Name Cat Food",
-          price: 15,
+          price: 15.99,
         },
         {
           createdAt: "11-04-2022",
@@ -43,7 +42,7 @@ export default class ProductsController {
           imgUrl:
             "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2371&q=80",
           name: "Brand Name Dog Food",
-          price: 15,
+          price: 15.99,
         },
         {
           createdAt: "11-04-2022",
@@ -53,7 +52,7 @@ export default class ProductsController {
           imgUrl:
             "https://cdn.pixabay.com/photo/2014/05/21/18/08/dog-bones-350092_1280.jpg",
           name: "Brand Name Dog Treats",
-          price: 10,
+          price: 10.99,
         },
       ];
       localStorage.setItem("products", JSON.stringify(productsFromLS));
