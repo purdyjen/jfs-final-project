@@ -1,23 +1,34 @@
+// Creating a class called ProductsController so that we can create new objects to store products and assign unique IDs
 export default class ProductsController {
   constructor(currentId = 0) {
     this.products = [];
     this.currentId = currentId;
   }
 
+  // When we add a new product object (to the productController object), we want to know on what day it was created/added, so this method is a way to automatically assign that information
   getDate() {
+    // Calling the new Date() constructor in order to return a new Date object
     const d = new Date();
+    // Calling the getUTCMonth method to grab the month value
+    // The method returns a number between 0-11, with 0 being January, so in order to be accurate, we have to add 1 to the value returned
+    // We are also converting it to a string for ease of concatenation
     let month = (d.getUTCMonth() + 1).toString();
+    // Gets the numeric date of the date object, converts to string
     let date = d.getUTCDate().toString();
+    // Gets the full year and converts to string
     let year = d.getFullYear().toString();
 
+    // We want to make sure that our date is always two digits in case we need to sort by date created, so if the value returned by .getUTCDate() is less than 10, then we add a 0
     if (date < 10) {
       date = "0" + date;
     }
-
+    // Finally, the function concatenates all the values into our desired format and returns
     return month + "-" + date + "-" + year;
   }
 
+  // Creating a method in order to load whatever product data is available in localStorage OR if there is no data stored, sets the productsFromLS value to an empty array to which we then add in three sample products, which are then saved to the ProductController products array. Finally, we save the objects products array to localStorage and return the array
   loadProductsFromLS = () => {
+    // JSON.parse() converts the data saved to localStorage from a string and back into an array of objects
     let productsFromLS = JSON.parse(localStorage.getItem("products")) || [];
 
     if (productsFromLS.length === 0) {
@@ -53,17 +64,39 @@ export default class ProductsController {
           price: 10.99,
         },
       ];
-      localStorage.setItem("products", JSON.stringify(productsFromLS));
+      for (let i = 0; i < productsFromLS.length; i++) {
+        this.addProduct(
+          productsFromLS[i].name,
+          productsFromLS[i].description,
+          productsFromLS[i].imgUrl,
+          productsFromLS[i].imgAltText,
+          productsFromLS[i].price
+        );
+        localStorage.setItem("products", JSON.stringify(productsFromLS));
+        console.log("if statement");
+      }
     } else {
-      this.products = productsFromLS;
+      for (let i = 0; i < productsFromLS.length; i++) {
+        this.addProduct(
+          productsFromLS[i].name,
+          productsFromLS[i].description,
+          productsFromLS[i].imgUrl,
+          productsFromLS[i].imgAltText,
+          productsFromLS[i].price
+        );
+        localStorage.setItem("products", JSON.stringify(productsFromLS));
+        console.log("else statement");
+      }
     }
     return productsFromLS;
   };
 
+  // Creating a method to save the products array to localStorage when a change is made. In product-form.js, we pull the values from the input fields, create a new product object and save it to the products array, but we still need to save that new information into localStorage so that it is always current.
   saveProductsToLS = () => {
     localStorage.setItem("products", JSON.stringify(this.products));
   };
 
+  // Adds new product object
   addProduct(name, description, imgUrl, imgAltText, price) {
     const product = {
       id: this.currentId++,
