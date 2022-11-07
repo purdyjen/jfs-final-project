@@ -64,9 +64,29 @@ export default class ProductsController {
           price: 10.99,
         },
       ];
-      localStorage.setItem("products", JSON.stringify(productsFromLS));
+      for (let i = 0; i < productsFromLS.length; i++) {
+        this.addProduct(
+          productsFromLS[i].name,
+          productsFromLS[i].description,
+          productsFromLS[i].imgUrl,
+          productsFromLS[i].imgAltText,
+          productsFromLS[i].price
+        );
+        localStorage.setItem("products", JSON.stringify(productsFromLS));
+        console.log("if statement");
+      }
     } else {
-      this.products = productsFromLS;
+      for (let i = 0; i < productsFromLS.length; i++) {
+        this.addProduct(
+          productsFromLS[i].name,
+          productsFromLS[i].description,
+          productsFromLS[i].imgUrl,
+          productsFromLS[i].imgAltText,
+          productsFromLS[i].price
+        );
+        localStorage.setItem("products", JSON.stringify(productsFromLS));
+        console.log("else statement");
+      }
     }
     return productsFromLS;
   };
