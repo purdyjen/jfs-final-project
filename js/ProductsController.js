@@ -1,10 +1,16 @@
 // Creating a class called ProductsController so that we can create new objects to store products and assign unique IDs
+// IMPORTANT!!
+// Products should never be added to the products array directly. They should only be added by way of the addProduct method. This is the only way of ensuring the currentId is correctly set
+// Hypothetical: Just to make things more complicated, this approach gets dicey if you add in a method to remove products. One potential solution would be to create an itemsRemoved counter that is also saved to localStorage and then after every element in the array has been added, the currentId is then incremented by the number of elements (total) that have been removed.
 export default class ProductsController {
   constructor(currentId = 0) {
-    this.products = [];
+    this._products = [];
     this.currentId = currentId;
   }
 
+  get products() {
+    return this._products;
+  }
   // When we add a new product object (to the productController object), we want to know on what day it was created/added, so this method is a way to automatically assign that information
   getDate() {
     // Calling the new Date() constructor in order to return a new Date object
@@ -30,7 +36,7 @@ export default class ProductsController {
   loadProductsFromLS = () => {
     // JSON.parse() converts the data saved to localStorage from a string and back into an array of objects
     let productsFromLS = JSON.parse(localStorage.getItem("products")) || [];
-
+    // If the productsFromLS array is empty, we assign a sample product array to productsFromLS as a starting point, and then call the addProduct method for each element in the array, passing in the necessary information
     if (productsFromLS.length === 0) {
       productsFromLS = [
         {
@@ -75,6 +81,7 @@ export default class ProductsController {
         localStorage.setItem("products", JSON.stringify(productsFromLS));
         console.log("if statement");
       }
+      // If the productsFromLS array is NOT empty, we don't need to provide any sample data, but we do still need to call the addProduct method for each element in the array
     } else {
       for (let i = 0; i < productsFromLS.length; i++) {
         this.addProduct(
@@ -96,7 +103,7 @@ export default class ProductsController {
     localStorage.setItem("products", JSON.stringify(this.products));
   };
 
-  // Adds new product object
+  // Adds new product object, increments currentId
   addProduct(name, description, imgUrl, imgAltText, price) {
     const product = {
       id: this.currentId++,
@@ -107,6 +114,6 @@ export default class ProductsController {
       price: price,
       createdAt: this.getDate(),
     };
-    this.products.push(product);
+    this._products.push(product);
   }
 }
