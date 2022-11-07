@@ -1,5 +1,3 @@
-// import { loadProductsFromLS } from "./products.js";
-
 export default class ProductsController {
   constructor(currentId = 0) {
     this.products = [];
