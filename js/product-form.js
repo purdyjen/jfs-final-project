@@ -1,5 +1,5 @@
-import ProductsController from "./ProductsController.js";
-import { titleCase, formatPrice } from "./helperFunctions.js";
+import ProductsController from "../js/ProductsController.js";
+import { titleCase, formatPrice } from "../js/helperFunctions.js";
 // Initialize a new productsController with currentId set to 0
 const productsController = new ProductsController(0);
 productsController.loadProductsFromLS();

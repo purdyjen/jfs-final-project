@@ -1,4 +1,4 @@
-import ProductsController from "./ProductsController.js";
+import ProductsController from "../js/ProductsController.js";
 const products = new ProductsController();
 
 const loadedProducts = products.loadProductsFromLS();
