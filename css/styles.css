@@ -26,6 +26,9 @@
 
 .card {
     max-width: 500px;
+}
+
+.bio {
     min-height: 420px;
 }
 
