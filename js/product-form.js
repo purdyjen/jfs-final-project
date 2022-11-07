@@ -1,7 +1,7 @@
 import ProductsController from "./ProductsController.js";
 import { titleCase, formatPrice } from "./helperFunctions.js";
 // Initialize a new productsController with currentId set to 0
-const productsController = new ProductsController(0);
+const productsController = new ProductsController();
 productsController.loadProductsFromLS();
 // Select the new product form
 const addNewProductForm = document.getElementById("add-new-product");
